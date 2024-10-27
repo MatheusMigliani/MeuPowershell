@@ -51,7 +51,7 @@ function executeNpmInstall {
 }
 # Alias para instalar pacotes NPM
 # Uso: ni <pacote>
-Set-Alias -Name ni -Value executeNpmInstall
+Set-Alias -Name ninstall -Value executeNpmInstall
 
 # NPM Build
 function executeNpmBuild {
@@ -59,7 +59,7 @@ function executeNpmBuild {
 }
 # Alias para construir o projeto usando NPM
 # Uso: nb <opções>
-Set-Alias -Name nb -Value executeNpmBuild
+New-Alias -Name nb -Value executeNpmBuild
 
 # Bun CLI
 function executeBunDev {
@@ -139,15 +139,15 @@ function executeGitCommit {
   git commit -m $args
 }
 # Alias para fazer commit no Git com uma mensagem
-# Uso: gc <mensagem>
-Set-Alias -Name gc -Value executeGitCommit
+# Uso: gcm <mensagem>
+Set-Alias -Name commit -Value executeGitCommit
 
 function executeGitPush {
   git push $args
 }
 # Alias para fazer push das alterações no Git
-# Uso: gp <opções>
-Set-Alias -Name gp -Value executeGitPush
+# Uso: gpush <opções>
+New-Alias -Name push -Value executeGitPush
 
 function cloneCurrentBranch {
   param (
@@ -158,7 +158,7 @@ function cloneCurrentBranch {
 }
 # Alias para clonar o branch atual para um novo branch
 # Uso: gclone <novoBranch>
-Set-Alias -Name gclone -Value cloneCurrentBranch
+Set-Alias -Name clone -Value cloneCurrentBranch
 
 function createGitBranch {
   param (
@@ -168,7 +168,7 @@ function createGitBranch {
 }
 # Alias para criar um novo branch no Git
 # Uso: gcb <branchName>
-Set-Alias -Name gcb -Value createGitBranch
+Set-Alias -Name newbranch -Value createGitBranch
 
 function switchGitBranch {
   param (
@@ -178,4 +178,35 @@ function switchGitBranch {
 }
 # Alias para trocar para um branch existente no Git
 # Uso: gco <branchName>
-Set-Alias -Name gco -Value switchGitBranch
+Set-Alias -Name checkout -Value switchGitBranch
+
+function executeGitPull {
+  git pull $args
+}
+# Alias para fazer pull das alterações no Git
+# Uso: gpl <opções>
+Set-Alias -Name pull -Value executeGitPull
+
+function executeGitMerge {
+  param (
+    [string]$branchName
+  )
+  git merge $branchName
+}
+# Alias para fazer merge de um branch no Git
+# Uso: gm <branchName>
+New-Alias -Name merge -Value executeGitMerge
+
+function executeGitLog {
+  git log $args
+}
+# Alias para exibir o log de commits do Git
+# Uso: glog <opções>
+Set-Alias -Name glog -Value executeGitLog
+
+function executeGitDiff {
+  git diff $args
+}
+# Alias para exibir as diferenças entre commits no Git
+# Uso: gdiff <opções>
+Set-Alias -Name gdiff -Value executeGitDiff
